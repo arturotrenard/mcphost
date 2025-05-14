@@ -9,7 +9,7 @@ import (
 	"github.com/charmbracelet/log"
 	"github.com/mark3labs/mcphost/pkg/history"
 	"github.com/mark3labs/mcphost/pkg/llm"
-	api "github.com/ollama/ollama/api"
+	"github.com/ollama/ollama/api"
 )
 
 func boolPtr(b bool) *bool {

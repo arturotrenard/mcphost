@@ -39,29 +39,29 @@ var (
 	tokyoBg     = lipgloss.Color("234") // #1a1b26
 
 	promptStyle = lipgloss.NewStyle().
-			Foreground(tokyoBlue).
-			PaddingLeft(2)
+		Foreground(tokyoBlue).
+		PaddingLeft(2)
 
 	responseStyle = lipgloss.NewStyle().
-			Foreground(tokyoFg).
-			PaddingLeft(2)
+		Foreground(tokyoFg).
+		PaddingLeft(2)
 
 	errorStyle = lipgloss.NewStyle().
-			Foreground(tokyoRed).
-			Bold(true)
+		Foreground(tokyoRed).
+		Bold(true)
 
 	toolNameStyle = lipgloss.NewStyle().
-			Foreground(tokyoCyan).
-			Bold(true)
+		Foreground(tokyoCyan).
+		Bold(true)
 
 	descriptionStyle = lipgloss.NewStyle().
-				Foreground(tokyoFg).
-				PaddingBottom(1)
+		Foreground(tokyoFg).
+		PaddingBottom(1)
 
 	contentStyle = lipgloss.NewStyle().
-			Background(tokyoBg).
-			PaddingLeft(4).
-			PaddingRight(4)
+		Background(tokyoBg).
+		PaddingLeft(4).
+		PaddingRight(4)
 )
 
 type MCPConfig struct {
@@ -207,7 +207,7 @@ func createMCPClients(
 	for name, server := range config.MCPServers {
 		var client mcpclient.MCPClient
 		var err error
-
+		log.Info("Creating MCP client... and type", "name", name, "type", server.Config.GetType())
 		if server.Config.GetType() == transportSSE {
 			sseConfig := server.Config.(SSEServerConfig)
 
@@ -245,6 +245,7 @@ func createMCPClients(
 				env,
 				stdioConfig.Args...)
 		}
+
 		if err != nil {
 			for _, c := range clients {
 				c.Close()
